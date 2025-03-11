@@ -12,6 +12,7 @@ public class Screenshots {
         page.navigate("https://www.lambdatest.com/selenium-playground/simple-form-demo");
         System.out.println(page.title());
 
+
         // screenshot
         Page.ScreenshotOptions scrshtOptions = new Page.ScreenshotOptions();
         page.screenshot(scrshtOptions.setPath(Paths.get("./snaps/scr.png")));
