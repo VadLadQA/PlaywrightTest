@@ -29,16 +29,18 @@ public class SimplePageTests {
         simplePage.goToSimplePage(); // навигируемся на simple страницу
         String pageTitle = simplePage.getPage().title(); // заносим заголовок страницы в переменную
         System.out.println(pageTitle); // выводим в консоль заголовок страницы
-        String expectedTitle = "Buttons | Simple Button | QA Practice";
-        assertEquals("no", expectedTitle, pageTitle);
+        String expectedTitle = "Buttons | Simple Button | QA Practice"; // ожидаемое название заголовка заносим в переменную
+        assertEquals("not equal", expectedTitle, pageTitle); //сравниваем с актуальным заголовком
     }
 
     @Test
     public void simpleClickBtn() {
         simplePage.goToSimplePage();
         simplePage.clickBtn("#submit-id-submit");
-        String btnResult = simplePage.getPage().locator("#result").textContent();
+        String btnResult = simplePage.getPage().locator("#result").textContent().trim(); // получение текста кнопки с удалением всех пробелов
         System.out.println(btnResult);
+        String expectedBtnName = "Submitted";
+        assertEquals("not equal",expectedBtnName,btnResult);
     }
 
     @After
