@@ -10,14 +10,25 @@ import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertTha
 
 public class YandexTests extends Config {
 
+    // -------------пример тестов с использованием POM паттерна:
     @Test
-    public void genTest(){
+    public void genTest() {
 
         yandexMain.open();
         yandexMain.search("playwright");
         yandexSearch.chkResult("playwright.dev");
         yandexSearch.clickResult("playwright.dev");
-        playwrightMain.chkPlaywPage(yandexSearch,"playwright.dev","Playwright","Copyright © 2025 Microsoft");
+        playwrightMain.chkPlaywPage(yandexSearch, "playwright.dev", "Playwright", "Copyright © 2025 Microsoft");
+    }
+
+    @Test
+    public void test2() {
+        yandexMain.open();
+        yandexMain.search("java");
+        yandexSearch.chkResult("java");
+    }
+
+    // --------------пример сгенерированных тестов движком Playwright-а:
 
 //        try (Playwright playwright = Playwright.create()) {
 //            Browser browser = playwright.chromium().launch(new BrowserType.LaunchOptions()
@@ -37,5 +48,4 @@ public class YandexTests extends Config {
 //            assertThat(page1.getByRole(AriaRole.CONTENTINFO)).containsText("Copyright © 2025 Microsoft");
 //            System.out.println(page1.url());
 //        }
-    }
 }
