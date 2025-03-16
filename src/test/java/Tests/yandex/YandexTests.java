@@ -17,7 +17,7 @@ public class YandexTests extends Config {
         yandexMain.open();
         yandexMain.search("playwright");
         yandexSearch.chkResult("playwright.dev");
-        yandexSearch.clickResult("playwright.dev");
+        //yandexSearch.clickResult("playwright.dev");
         playwrightMain.chkPlaywPage(yandexSearch, "playwright.dev", "Playwright", "Copyright © 2025 Microsoft");
     }
 
