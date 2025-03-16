@@ -2,16 +2,26 @@ package com.qa.opencart.factory;
 
 import com.microsoft.playwright.*;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.util.Properties;
+
 public class PlaywrightFactory {
 
-    // инициализация браузера
+    // инициализация переменных
 
     Playwright playwright;
     Browser browser;
     BrowserContext browserContext;
     Page page;
 
-    public Page initBrowser(String browserName) {
+    Properties prop;
+
+    // инициализация браузера
+
+    public Page initBrowser(Properties prop) {
+        String browserName = prop.getProperty("browser").trim();
         System.out.println("Браузер: " + browserName);
         playwright = Playwright.create();
 
@@ -36,8 +46,23 @@ public class PlaywrightFactory {
 
         browserContext = browser.newContext();
         page = browserContext.newPage();
-        page.navigate("https://naveenautomationlabs.com/opencart/");
+        page.navigate(prop.getProperty("url").trim());
 
         return page;
+    }
+
+    // инициализация properties из конфига
+
+    public Properties initProp() {
+        try {
+            FileInputStream ip = new FileInputStream("./src/test/resources/config/config.properties");
+            prop = new Properties();
+            prop.load(ip);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return prop;
     }
 }
