@@ -10,6 +10,8 @@ public class HomePage {
     private String search = "input[name='search']";
     private String searchIcon = "div#search button";
     private String searchPageHeader = "div#content h1";
+    private String myAccLink = "//span[normalize-space()='My Account']";
+    private String loginLink = "//a[normalize-space(text())='Login']";
 
     // конструктор страницы
     public HomePage(Page page) {
@@ -35,5 +37,11 @@ public class HomePage {
         String header = page.textContent(searchPageHeader);
         System.out.println("Заголовок в результатах поиска: " + header);
         return header;
+    }
+
+    public LoginPage navigateToLoginPage() {
+        page.click(myAccLink);
+        page.click(loginLink);
+        return new LoginPage(page);
     }
 }
