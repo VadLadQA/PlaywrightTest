@@ -3,7 +3,12 @@
 
 <suite name="Open Cart Test Regression Suite" thread-count="2" parallel="tests" verbose="4">
 
+<!--  листнер для репорта  -->
+    <listeners>
+        <listener class-name="com.qa.opencart.listeners.ExtentReportListener" />
+    </listeners>
 
+<!--  набор тест кейсов  -->
     <test name="Open Cart Home Page Test_chromium">
         <classes>
             <class name="com.qa.opencart.tests.HomePageTest" />
